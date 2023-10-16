@@ -28,11 +28,59 @@ exports.getProducts = ( req, res, next ) => {
     //     from: 'showProducts',
     //     products : products
     // });
+<<<<<<< HEAD
     Product.fetchAll( products => {
+=======
+     Product.fetchAll( products => {
+>>>>>>> 61327d83b7cf9cd8f2af96fe208f9a4b30f168c7
         res.render( 'admin/showProductsAdmin', {
             title: "Show Available Products",
             from: 'showProducts',
             products : products
         });
     });
+<<<<<<< HEAD
+=======
+}
+exports.deleteProduct = ( req, res, next ) => {
+    let id = req.params.id;
+    console.log(`id:${id}`);
+    res.send("Happy day" +id);
+}
+exports.editProduct = ( req, res, next ) => {
+    let id = req.params.id;
+    console.log( "id=" +id );
+    // fetch all the records and find the idth one
+    Product.fetchAll( products => {
+      //
+      for( let i=0; i<products.length; i++){
+          if ( i == id ){
+              console.log("Product gotten");
+              console.log( products[i]);
+              res.render( 'admin/ShowUpdateForm', {
+                  title : `Update record:${id} `,
+                  id : id,
+                  from: 'updateProducts',
+                  product: products[i]
+              })
+              return;
+          }
+      }
+        // This is the case where did not find id
+        res.render( 'admin/ShowUpdateForm', {
+            title : `Update record:${id} `,
+            id : id,
+            from: 'updateProducts',
+            product: null
+        })
+
+    })
+    // res.send("Happy day is edit again" +id);
+}
+exports.postUpdateProduct = ( req, res, next ) => {
+    let id = req.body.productId;
+    console.log(`id:${id}`);
+    console.log( `author:${req.body.author}`)
+    res.send("Happy day are here again made it to most update product" +id);
+>>>>>>> 61327d83b7cf9cd8f2af96fe208f9a4b30f168c7
 }

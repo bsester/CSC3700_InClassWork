@@ -28,7 +28,11 @@ exports.getProducts = ( req, res, next ) => {
     //     from: 'showProducts',
     //     products : products
     // });
+<<<<<<< HEAD
     Product.fetchAll( products => {
+=======
+     Product.fetchAll( products => {
+>>>>>>> 61327d83b7cf9cd8f2af96fe208f9a4b30f168c7
         res.render( 'admin/showProductsAdmin', {
             title: "Show Available Products",
             from: 'showProducts',
